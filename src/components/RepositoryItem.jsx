@@ -1,7 +1,9 @@
-import { View, Text } from "react-native"
+import { View, Text, Image } from "react-native"
+import theme from "../theme"
 
 const RepositoryItem = ({repository}) => (
-    <View>
+    <View style={{backgroundColor: 'white'}}>
+        <Image style={theme.logo} source={{uri: repository.ownerAvatarUrl}}></Image>
         <Text>Full name: {repository.fullName}</Text>
         <Text>Description: {repository.description}</Text>
         <Text>Language: {repository.language}</Text>
