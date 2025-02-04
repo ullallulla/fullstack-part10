@@ -1,6 +1,7 @@
 import {Text, TextInput, View, Pressable, StyleSheet} from 'react-native';
 import { useFormik } from 'formik';
-import theme from "../theme"
+import * as yup from 'yup';
+import theme from "../theme";
 
 const styles = StyleSheet.create({
     container: {
@@ -32,6 +33,13 @@ const styles = StyleSheet.create({
     },
   });
 
+const validationSchema = yup.object().shape({
+    username: yup.string()
+        .required('username required'),
+    password: yup.string()
+        .required('password required')
+})
+
 const initialValues = {
     username: '',
     password: ''
@@ -44,24 +52,31 @@ const onSubmit = (values) => {
 const SignInForm = ( { onSubmit } ) => {
     const formik = useFormik({
         initialValues,
+        validationSchema,
         onSubmit
     })
 
     return (
         <View style={styles.container}>
             <TextInput
-            style={styles.input} 
+            style={[styles.input, formik.errors.username && formik.touched.username ? {borderColor: '#d73a4a'} : null]} 
             placeholder='Username'
             value={formik.values.username}
             onChangeText={formik.handleChange('username')}
             />
+            {formik.touched.username && formik.errors.username && (
+                <Text style={{ color: '#d73a4a', marginBottom: 10 }}>{formik.errors.username}</Text>
+            )}
             <TextInput 
-            style={styles.input}
+            style={[styles.input, formik.errors.password && formik.touched.password ? {borderColor: '#d73a4a'} : null]} 
             placeholder='Password'
             value={formik.values.password}
             onChangeText={formik.handleChange('password')}
             secureTextEntry
             />
+            {formik.touched.password && formik.errors.password && (
+                <Text style={{ color: '#d73a4a', marginBottom: 10 }}>{formik.errors.password}</Text>
+            )}
             <Pressable style={styles.button} onPress={formik.handleSubmit}>
                 <Text style={styles.buttonText}>Sign in</Text>
             </Pressable>
