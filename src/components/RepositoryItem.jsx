@@ -1,5 +1,6 @@
-import { View, Text, Image, StyleSheet } from "react-native"
+import { View, Image, StyleSheet } from "react-native"
 import theme from "../theme"
+import Text from "./Text";
 
 
 const styles = StyleSheet.create({
@@ -30,8 +31,8 @@ const RepositoryItem = ({repository}) => (
             </View>
             
             <View style={styles.column}>
-                <Text style={{fontWeight: 'bold'}}>{repository.fullName}</Text>
-                <Text>Description: {repository.description}</Text>
+                <Text fontWeight='bold'>{repository.fullName}</Text>
+                <Text color="textSecondary">Description: {repository.description}</Text>
                 <View style={{alignSelf: 'flex-start'}}>
                     <Text style={styles.languageTag}>{repository.language}</Text>
                 </View>
@@ -41,20 +42,20 @@ const RepositoryItem = ({repository}) => (
         
         <View style={styles.row}>
             <View style={{flexDirection: 'column'}}>
-                <Text style={{fontWeight: 'bold'}}>{formatCount(repository.stargazersCount)}</Text>
-                <Text>Stars</Text>
+                <Text fontWeight='bold'>{formatCount(repository.stargazersCount)}</Text>
+                <Text color="textSecondary">Stars</Text>
             </View>
             <View style={{flexDirection: 'column'}}>
-                <Text style={{fontWeight: 'bold'}}>{formatCount(repository.forksCount)}</Text>
-                <Text>Forks</Text>
+                <Text fontWeight='bold'>{formatCount(repository.forksCount)}</Text>
+                <Text color="textSecondary">Forks</Text>
             </View>
             <View style={{flexDirection: 'column'}}>
-                <Text style={{fontWeight: 'bold'}}>{formatCount(repository.reviewCount)}</Text>
-                <Text>Reviews</Text>
+                <Text fontWeight='bold'>{formatCount(repository.reviewCount)}</Text>
+                <Text color="textSecondary">Reviews</Text>
             </View>
             <View style={{flexDirection: 'column'}}>
-                <Text style={{fontWeight: 'bold'}}>{formatCount(repository.ratingAverage)}</Text>
-                <Text>Rating</Text>
+                <Text fontWeight='bold'>{formatCount(repository.ratingAverage)}</Text>
+                <Text color="textSecondary">Rating</Text>
             </View>
         </View>
     </View>
