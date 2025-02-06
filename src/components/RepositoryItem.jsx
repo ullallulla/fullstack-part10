@@ -41,19 +41,19 @@ const RepositoryItem = ({repository}) => (
         
         
         <View style={styles.row}>
-            <View style={{flexDirection: 'column'}}>
+            <View style={{flexDirection: 'column', marginBottom: 10}}>
                 <Text fontWeight='bold'>{formatCount(repository.stargazersCount)}</Text>
                 <Text color="textSecondary">Stars</Text>
             </View>
-            <View style={{flexDirection: 'column'}}>
+            <View style={{flexDirection: 'column', marginBottom: 10}}>
                 <Text fontWeight='bold'>{formatCount(repository.forksCount)}</Text>
                 <Text color="textSecondary">Forks</Text>
             </View>
-            <View style={{flexDirection: 'column'}}>
+            <View style={{flexDirection: 'column', marginBottom: 10}}>
                 <Text fontWeight='bold'>{formatCount(repository.reviewCount)}</Text>
                 <Text color="textSecondary">Reviews</Text>
             </View>
-            <View style={{flexDirection: 'column'}}>
+            <View style={{flexDirection: 'column', marginBottom: 10}}>
                 <Text fontWeight='bold'>{formatCount(repository.ratingAverage)}</Text>
                 <Text color="textSecondary">Rating</Text>
             </View>
