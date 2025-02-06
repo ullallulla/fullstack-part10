@@ -4,6 +4,7 @@ import * as yup from 'yup';
 import theme from "../theme";
 import Text from './Text';
 import useSignIn from '../hooks/useSignIn';
+import { useNavigate } from 'react-router-native';
 
 const styles = StyleSheet.create({
     container: {
@@ -81,14 +82,17 @@ const SignInForm = ( { onSubmit } ) => {
         </View>
     )
 }
+
 const SignIn = () => {
     const [signIn] = useSignIn();
+    const navigate = useNavigate()
     const onSubmit = async (values) => {
         const { username, password } = values;
 
         try {
-            const { data } = await signIn({ username, password });
+            const data = await signIn({ username, password });
             console.log(data)
+            navigate('/')
         } catch (e) {
         console.log(e);
         }
